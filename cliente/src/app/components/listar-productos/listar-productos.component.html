@@ -5,7 +5,7 @@
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE PRODUCTOS</span>
                     <button class="btn btn-success float-end" routerLink="/crear-producto">NUEVO</button>
-                    <table class="table table-striped mt-4">
+                    <table class="table table-striped mt-4" *ngIf="listProductos.length >0">
                         <thead>
                             <tr>
                                 <th scope="col">Producto</th>
@@ -16,24 +16,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Coca-Cola</th>
-                                <td>Bebida</td>
-                                <td>Bnos Aires</td>
-                                <td>2USD</td>
-                                <td><i class="fas fa-edit text-primary"></i><i class="fas fa-trash text-danger"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Agua con gas</th>
-                                <td>Bebida</td>
-                                <td>Bogota</td>
-                                <td>1USD</td>
-                                <td><i class="fas fa-edit text-primary"></i><i class="fas fa-trash text-danger"></i>
+                            <tr *ngFor="let producto of listProductos">
+                                <th scope="row">{{producto.nombre}}</th>
+                                <td>{{producto.categoria}}</td>
+                                <td>{{producto.ubicacion}}</td>
+                                <td>{{producto.precio | currency: 'USD'}}</td>
+                                <td>
+                                    <i [routerLink]="['/editar-producto', producto._id]" class="fas fa-edit text-primary"></i>
+                                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
+                    <h5 style="text-align: start;" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
                 </div>
             </div>
         </div>
