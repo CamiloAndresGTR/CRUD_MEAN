@@ -14,7 +14,10 @@ export class ListarProductosComponent implements OnInit {
   constructor(
     private _productoService: ProductoService,
     private toastr: ToastrService
-  ) {}
+  ) {
+
+    _productoService.getPaises().subscribe(data=> {console.log('pais'); console.log(data)});
+  }
 
   ngOnInit(): void {
     this.obtenerProductos();

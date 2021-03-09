@@ -2,6 +2,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { producto } from '../models/producto';
+import {map} from 'rxjs/operators';
+import { CountriesResponse } from '../models/countries-response';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +25,8 @@ obtenerProducto(id: String): Observable<any>{
 }
 editarProducto(id: String, producto: producto): Observable<any>{ 
   return this.http.put(this.url +id, producto);
+}
+getPaises(){
+  return this.http.get<Observable<CountriesResponse[]>>('https://restcountries.eu/rest/v2/lang/es');
 }
 }

@@ -61,11 +61,6 @@ if (this.id !== null) {
     }
     )
 }
-
-    
-
-   
-    
   }
   esEditar(){
 if (this.id !== null) {

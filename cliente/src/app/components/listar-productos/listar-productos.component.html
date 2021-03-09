@@ -1,10 +1,10 @@
-<div class="container mt-5">
+<div class="container mt-5 animate__animated animate__fadeInLeft">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE PRODUCTOS</span>
-                    <button class="btn btn-success float-end" routerLink="/crear-producto">NUEVO</button>
+                    <button class="btn btn-success float-end" routerLink="/crear-producto"><i class="fa fa-plus" aria-hidden="true"></i></button>
                     <table class="table table-striped mt-4" *ngIf="listProductos.length >0">
                         <thead>
                             <tr>
